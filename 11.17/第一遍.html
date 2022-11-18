@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .div6 {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .item {
+        width: 100px;
+        height: 40px;
+        border: 1px solid #000;
+        float: left;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <div class="div6">
+        <h2>点击切换颜色</h2>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+<script>
+    // //声明变量
+    // let a
+    // let b, c, d
+    // let e = 10
+    // let f = 20, g = 30, h = []
+
+    // // 块级作用域
+    // {
+    //     let name = '77'
+    // }
+    // let name = '66'
+    // console.log(name); //66
+    // // 不存在变量提升
+    // // console.log(song);
+    // // let song = 'song'
+
+    // let divs = document.getElementsByClassName('item')
+    // for (let i = 0; i < divs.length; i++) {
+    //     divs[i].onclick = function () {
+    //         divs[i].style.backgroundColor = 'red'
+    //     }
+    // }
+
+    // const F4 = ['aa', 'bb', 'cc', 'dd']
+    // let [aa, bb, cc, dd] = F4
+    // let ff = F4[0]
+    // console.log(f);
+
+
+    // const Z = {
+    //     name: '七七',
+    //     age: 11,
+    //     job: function () {
+    //         console.log('我是七七');
+    //     }
+    // }
+    // let { name } = Z
+    // console.log(name);
+
+
+    // let restlta = '<ul>' + '<li>aa</li>' + '<li>bb</li>' + '<li>cc</li>' + '</ul>'
+    // let restltb = `<ul>
+    //     <li>aa</li>
+    //     <li>bb</li>
+    //     <li>cc</li>
+    // </ul>`
+
+
+
+    // document.write(restltb)
+    // document.write(restlta)
+    // let name = '七七'
+    // let hope = function () {
+    //     console.log('我是七七');
+    // }
+    // const Z = {
+    //     name,
+    //     hope
+    // }
+    // console.log(Z);
+
+    // function name2() {
+    //     console.log(this.name);
+    // }
+    // let name1 = () => {
+    //     console.log(this.name);
+    // }
+    // window.name = 'window'
+    // const Z = {
+    //     name: "七七"
+    // }
+    // name2()
+    // name1()
+
+    // name2.call(Z)
+    // name1.call(Z)
+
+    // let div = document.getElementsByClassName('item')
+    // let ad = document.getElementById('ad')
+    // // for (let i = 0; i < div.length; i++) {
+    // //     div[i].onclick = function () {
+    // //         setTimeout(() => {
+    // //             div[i].style.backgroundColor = 'red'
+    // //         }, 2000);
+    // //     }
+    // // }
+
+    // ad.addEventListener('click', function () {
+    //     setTimeout(() => {
+    //         ad.style.backgroundColor = 'red'
+    //     }, 2000);
+    // })
+
+
+    // 返回偶数
+    // const ARR = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // const RESULT = ARR.filter(item => item % 2 === 0)
+    // console.log(RESULT);
+
+
+    // function date() {
+    //     console.log(auguments);
+    // }
+    // date("aa", "bb", "cc")
+
+    // function date(...arg) {
+    //     console.log(arg);
+    // }
+    // date("aa", "bb", "cc")
+
+    // function fn(a, b, ...arg) {
+    //     console.log(a, b, arg);
+    // }
+    // fn("aa", "bb", "cc", "dd", "ee")
+    // 1.数组的合并
+    //     const ab = ['aa','bb']
+    //     const cd = ['cc','dd']
+    //     const ef = [...ab,...cd]
+    //     console.log(ef);
+    //     const ar = ab.concat(cd)
+    //     console.log(ar);
+
+    // // 2.数组的克隆
+    //     const dx = ['aa','bb','cc','dd']
+    //     const sz = [...dx]
+
+    // // 3.将伪数组转换为数组
+    //     const divs = document.querySelectorAll('div')
+    //     const divsArr = [...divs]
+    //     console.log(divsArr);
+
+
+    // 创建Sumbol()
+    // let s = Symbol()
+    // let s2 = Symbol('aa')
+    // let s3 = Symbol('bb')
+    // let s5 = Symbol('cc')
+    // let s4 = Symbol('dd')
+    // console.log(s, s2, s3, s4, s5);
+    // //不能去其他数据进行运算，不然会报错
+    // let res = s + 100
+    // let res1 = s > 100
+    // let res2 = s + s2
+    // console.log(res, res1, res2);
+</script>
+
+</html>

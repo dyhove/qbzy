@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // console.log(1);
+    // setTimeout(() => {
+    //     console.log(2);
+    // }, 0);
+    // new Promise((resolve, reject) => {
+    //     console.log(3);
+    //     resolve(4);
+    // }).then((res) => {
+    //     console.log(res);
+    // })
+    // console.log(5);
+    // const obj = {}
+    // console.log(obj.__proto__ === Object.prototype)
+    // console.log(obj.toString)  // ƒ toString() { [native code] }
+
+    // const obj2 = new Object()
+    // console.log(obj2.__proto__ === Object.prototype)
+    // console.log(obj2.toString) // ƒ toString() { [native code] }
+    // function Person() {
+    //     this.name = '666'
+    // }
+    // function Super() { this.a = [1, 2] }
+    // Super.prototype.say = function () { console.log('hhh') }
+    // function Sub() {
+    //     Super.call(this)
+    //     this.b = 2
+    // }
+
+    // Sub.prototype = Object.create(Super.prototype)
+    // Sub.prototype.constructor = Sub
+
+    // const test = new Sub()
+    // function createObj(o) {
+    //     let clone = objectCopy(o)
+    //     clone.say = function () {
+    //         console.log('hhh')
+    //     }
+    //     return clone
+    // }
+
+    // const obj = { a: 1 }
+    // const test = createObj(obj)
+    // const obj = { a: 1 }
+
+    // const test = Object.create(obj)
+    // function Super() { this.a = [1, 2] }
+    // Super.prototype.say = function () { console.log(hhh) }
+    // function Sub() {
+    //     Super.call(this)
+    //     this.b = 2
+    // }
+    // Sub.prototype = new Super()
+    // let Super = function () { this.a = 1 }
+    // let Sub = function () {
+    //     Super.call(this)
+    //     this.b = 2
+    // }
+    // const test = new Sub()
+    // console.log(test.a)//1
+    // function Super() { this.a = 1 }
+    // Super.prototype.say = function () { console.log('say') }
+    // function Sub() { }
+    // Sub.prototype = new Super()
+
+    // const test = new Sub()
+    // console.log(test.say())// say
+
+    // var func = () => {
+    //     console.log(this);
+    // };
+    // var obj = {
+    //     ber: func,
+    // };
+    // obj.ber(); //window
+
+    // var o = {
+    //     a: 10,
+    //     b: {
+    //         a: 12,
+    //         fn: function () {
+    //             console.log(this.a);
+    //         },
+    //     },
+    // };
+    // o.b.fn(); //b
+
+    // function foo() {
+    //     console.log(this)
+    // }
+    // foo()//window
+    // // 隐式绑定
+    // var obj = {
+    //     name: "why",
+    //     foo: foo
+    // }
+
+    // obj.foo() // obj对象
+    // // 显示绑定
+    // var obj = {
+    //     name: "obj"
+    // }
+
+    // // call/apply是可以指定this的绑定对象
+    // foo.call(obj)
+    // foo.apply(obj)
+    // foo.apply("aaaa")
+
+    // let newArr = []
+    // let tempArr5 = [1, 2, [3, 4, [5, 6]], 7];
+    // function toarray(arr) {
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (Array.isArray(arr[i])) {
+    //             toarray(arr[i])
+    //         } else {
+    //             newArr.push(arr[i])
+    //         }
+    //     }
+    //     return newArr
+    // }
+    // console.log(toarray(tempArr5));
+    // function deepClone(obj) {
+    //     // 判断是否是对象
+    //     if (typeof obj !== 'object' || obj == null) {
+    //         return obj
+    //     }
+    //     let result
+    //     // 判断是否是数组
+    //     if (obj instanceof Array) {
+    //         result = []
+    //     } else {
+    //         result = {}
+    //     }
+    //     if (obj instanceof Date) {
+    //         return new Date(obj)
+    //     }
+    //     if (obj instanceof RegExp) {
+    //         return new RegExp(obj)
+    //     }
+    //     for (let key in obj) {
+    //         // 保证 key 不是原型的属性
+    //         if (obj.hasOwnProperty(key)) {
+    //             // 递归调用
+    //             result[key] = deepClone(obj[key])
+    //         }
+    //     }
+    //     return result
+    // }
+    // let a = 'weqweqweqwe'
+    // function first() {
+    //     console.log('first');
+    // }
+    // first()
+    // console.log('ujbdgjsg');
+</script>
+
+</html>

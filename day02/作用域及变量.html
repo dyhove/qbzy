@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    var srt = '一二三四五六'
+    console.log(srt.length); // 6
+
+    var a = srt.charAt(5)
+    console.log(a); // 六
+
+    var srt1 = 'abc' 
+    var srt2 = 'def'
+    var srt3 = srt1.concat(srt2)
+    console.log(srt3); // abcdef
+    var b = srt1 + srt2
+    console.log(b); // abcdef
+
+
+    var indof = srt.indexOf('七')
+    var indof1 = srt.indexOf('三')
+    var off = '111112222222222333333333333333'
+    var indof2 = off.indexOf('2')
+    console.log(indof2); // 5
+    console.log(indof); // -1
+    console.log(indof1); // 2
+
+
+    var last = srt.lastIndexOf('三')
+    console.log(last); // 2
+
+    var rep = '一二三四五六'
+    console.log(rep.replace('三', '七')); // 一二七四五六
+    console.log(rep); // 一二三四五六
+
+
+    var strr = '1一1二1三1四1五1六'
+    console.log(strr);
+    console.log(strr,split()); // 1一1二1三1四1五1六
+    console.log(strr.split('')); // ["1", "一", "1", "二", "1", "三", "1", "四", "1", "五", "1", "六"]
+    console.log(strr.split('1')); // ["", "一", "二", "三", "四", "五", "六"]
+    console.log(strr.split('1', 2));// ["", "一"]
+
+    
+</script>
+</body>
+
+</html>

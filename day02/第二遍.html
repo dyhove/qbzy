@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //数据类型  1.基本数据类型  2.引用数据类型
+        // 1.number
+        let strnum = '123';
+        let num1 = Number(strnum);
+        console.log(num1); // 123
+        let parstr = '123.5';
+        // parseFloat() 会将字符串转换为浮点数
+        let parnum = parseFloat(parstr);
+        console.log(parnum); // 123.5
+        let parsestr = '123.456';
+
+        console.log(Number(1n)); // 1
+        console.log(Number(2n)); // 2
+        // 数组转换为数字
+        console.log(Number([1])); // 1
+        console.log(Number([1, 2, 3])); // NaN
+        console.log(parseInt('12.3dd')); // 12
+        console.log(parseFloat('12.3dd')); // 12.3
+        // 2.string
+        console.log(String(123)); // '123'
+        console.log(String(NaN)); // 'NaN'
+        console.log(String(null)); // 'null'
+        console.log(String(undefined)); // 'undefined'
+        console.log(String(Symbol('a'))); // 'Symbol(a)'
+        console.log(String({})); // '[object Object]'
+        console.log(12 + '12');     // '1212'
+        console.log(12 + new Date());  // '12Mon Aug 02 2021 16:00:00 GMT+0800 (中国标准时间)'
+        console.log(12 + [12]); // '1212'
+        var i = 1;
+        console.log(i); // 1
+        var a = i++;
+        console.log(a + 'i++'); // 1i++
+        console.log(i); // 2
+        var i = 1;
+        console.log(i); // 1
+        var b = ++i;
+        console.log(b + '++i'); // 2++i
+        console.log(i); // 2
+        // 3.boolean
+        console.log(Boolean(0) + '0'); // 'false0'
+        console.log(Boolean(NaN) + 'NaN'); // 'falseNaN'
+        console.log(Boolean(undefined) + 'undefined'); // 'falseundefined'
+        console.log(Boolean(null) + 'null'); // 'falsenull'
+        console.log(Boolean('') + '空字符串'); // 'false空字符串'
+
+        //数据类型的判断
+        let num = 123;
+        let srt = '123'
+        let bool = true;
+
+        let arr = []
+        let obj = {}
+        let fun = function () { }
+        let cla = class { }
+        //typeof 这种方法只能检测基本数据类型，null和对象都会返回object
+        console.log(typeof num); // number
+        console.log(typeof srt); // string
+        console.log(typeof bool); // boolean
+        console.log(typeof arr); // object
+        console.log(typeof obj); // object
+        console.log(typeof fun); // function
+        console.log(typeof cla); // function
+        console.log(typeof null); // object
+        console.log(typeof undefined); // undefined
+        console.log(typeof Array); // function
+        console.log(typeof Function); // function
+        console.log(typeof aaa); // undefined   未定义的变量也是undefined
+
+        // instanceof 返回值是一个bool值 只要是基本数据类型检测就是false 只要是引用数据类型并且右边是object就是true 但是不能检测null和undefined，因为null和undefined没有构造函数 
+        console.log(num instanceof Number); // false
+        console.log(srt instanceof String); // false
+        console.log(bool instanceof Boolean); // false
+        console.log(arr instanceof Array); // true
+        console.log(obj instanceof Object); // true
+        console.log(fun instanceof Function); // true
+        console.log(cla instanceof Function); // true
+        console.log(null instanceof Object); // false
+        console.log(undefined instanceof Object); // false
+        console.log(Array instanceof Function); // true
+        console.log(Function instanceof Function); // true
+        // console.log(aaa instanceof Object); // 会报错
+
+        // Object.prototype.toString.call()  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断
+        console.log(Object.prototype.toString.call(num)); // [object Number]
+        console.log(Object.prototype.toString.call(srt)); // [object String]
+        console.log(Object.prototype.toString.call(bool)); // [object Boolean]
+        console.log(Object.prototype.toString.call(arr)); // [object Array]
+        console.log(Object.prototype.toString.call(obj)); // [object Object]
+        console.log(Object.prototype.toString.call(fun)); // [object Function]
+        console.log(Object.prototype.toString.call(cla)); // [object Function]
+        console.log(Object.prototype.toString.call(null)); // [object Null]
+        console.log(Object.prototype.toString.call(undefined)); // [object Undefined]
+        console.log(Object.prototype.toString.call(Array)); // [object Function]
+        console.log(Object.prototype.toString.call(Function)); // [object Function]
+        // console.log(Object.prototype.toString.call(aaa)); // 没定义会报错
+
+
+        //constructor  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断，可以被修改
+        console.log(num.constructor); // f Number() { [native code] }
+        console.log(srt.constructor); // f String() { [native code] }
+        console.log(bool.constructor); //   f Boolean() { [native code] }
+        console.log(arr.constructor); //    f Array() { [native code] }
+        console.log(obj.constructor); //    f Object() { [native code] }
+        console.log(fun.constructor); //    f Function() { [native code] }
+        console.log(cla.constructor); //    f Function() { [native code] }
+        // console.log(null.constructor); // 报错
+        // console.log(undefined.constructor); // 报错
+        console.log(Array.constructor); //  f Function() { [native code] }
+        console.log(Function.constructor); //   f Function() { [native code] }
+        // console.log(aaa.constructor); // 报错
+        function demo() { }
+        console.log(demo.constructor); //   f Function() { [native code] }
+        demo.prototype = Array.prototype;
+        let demo1 = new demo();
+        console.log(demo1.constructor); //  f Array() { [native code] }
+
+
+        //Object.getPrototypeOf()  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断，可以被修改
+        console.log(Object.getPrototypeOf(num)); // Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, …}
+        console.log(Object.getPrototypeOf(srt)); //     String {0: "", length: 0, constructor: ƒ, anchor: ƒ, big: ƒ, …}
+        console.log(Object.getPrototypeOf(bool)); //    Boolean {false, constructor: ƒ, toString: ƒ, valueOf: ƒ}
+        console.log(Object.getPrototypeOf(arr)); //     ƒ () { [native code] }
+        console.log(Object.getPrototypeOf(obj)); //    ƒ () { [native code] }
+        console.log(Object.getPrototypeOf(fun)); // [Function]
+        console.log(Object.getPrototypeOf(cla)); // [Function]
+        // console.log(Object.getPrototypeOf(null)); // 报错
+        // console.log(Object.getPrototypeOf(undefined)); // 报错
+        console.log(Object.getPrototypeOf(Array)); // [Function]
+        console.log(Object.getPrototypeOf(Function)); // [Function]
+        // console.log(Object.getPrototypeOf(aaa)); // 报错
+
+        //作用域
+        var a = 100;
+        function fun1() {
+            var b = 200;
+            if (true) {
+                let c = 300;
+                console.log(c);
+            }
+            console.log(b);
+        }
+        fun1();
+        console.log(a);
+        // 函数提升与变量提升的优先级
+        console.log(a);    // f a() {console.log(10)}
+        console.log(a());    // 10 undefined
+        var a = 3;
+        function a() {
+            console.log(10) //10
+        }
+        console.log(a);    // 3
+        // 字符串的方法
+        var srts = '一二三四五六'
+        console.log(srts.length); // 6
+        var a = srt.charAt(5)
+        console.log(a); // 六
+        var srt1 = 'abc'
+        var srt2 = 'def'
+        var srt3 = srt1.concat(srt2)
+        console.log(srt3); // abcdef
+        var b = srt1 + srt2
+        console.log(b); // abcdef
+        var indof = srt.indexOf('七')
+        var indof1 = srt.indexOf('三')
+        var off = '111112222222222333333333333333'
+        var indof2 = off.indexOf('2')
+        console.log(indof2); // 5
+        console.log(indof); // -1
+        console.log(indof1); // 2
+        var last = srt.lastIndexOf('三')
+        console.log(last); // 2
+        var rep = '一二三四五六'
+        console.log(rep.replace('三', '七')); // 一二七四五六
+        console.log(rep); // 一二三四五六
+        var strr = '1一1二1三1四1五1六'
+        console.log(strr);
+        console.log(strr.split('')); // ["1", "一", "1", "二", "1", "三", "1", "四", "1", "五", "1", "六"]
+        console.log(strr.split('1')); // ["", "一", "二", "三", "四", "五", "六"]
+        console.log(strr.split('1', 2));// ["", "一"]
+    </script>
+</body>
+
+</html>

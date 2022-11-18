@@ -1,0 +1,535 @@
+# 数据类型
+
+### js数据类型
+
+数据类型分为基本数据类型和复杂数据类型
+
+1.***基本数据类型***
+number、string、undefined、null、boolean、symbol、bigint
+
+2. ***引用数据类型【对象类型】***
+
+(1) 标准普通对象: object
+
+(2) 标准特殊对象： Array、RegExp、Date、Math、Error...
+
+(3) 非标准特殊对象：Number、String、Boolean...
+
+(4) 可调用对象/执行对象：function
+
+### js数据类型的转换
+
+Js中的数据类型转换有两种模式，**一种是隐式转换，一种是显示转换**
+
+隐式转换：浏览器默认去转换
+
+显示转换：自己手动用
+
+###### 1.Number
+
+**①Number**
+转换规则：
+1.字符串转换为数字：空字符串变为0，如果出现任何非有效数字字符，结果都是NaN
+
+```
+console.log(Number(''));//0
+console.log(Number('10'));//10
+console.log(Number('10px'));//NaN
+```
+
+2.布尔值转换为数字:true–>1,false–>0
+
+```
+console.log(Number(true));//1
+console.log(Number(false));//0
+```
+
+3.Symbol无法转换为数字，会报错:Uncaught TypeError: Cannot convert a Symbol value to a number
+
+```
+let a=Symbol('a')
+console.log(Number(a));//Uncaught TypeError: Cannot convert a Symbol value to a number
+```
+
+4.BigInt去除"n"
+
+```
+console.log(Number(1n));//1
+```
+
+5.parseInt() 会将字符串转换为整数
+
+```
+  let parsestr = '123.456';
+  let parsenum = parseInt(parsestr);
+    console.log(parsenum); // 123
+```
+
+6.parseFloat() 会将字符串转换为浮点数
+
+```
+    let parnum = parseFloat(parstr);
+    console.log(parnum); // 123.5
+```
+
+7.数组转换成数数字
+
+```
+    console.log(Number([1])); // 1
+    console.log(Number([1, 2, 3])); // NaN
+```
+
+8.Number
+
+```
+    let strnum = '123';
+    let num = Number(strnum);
+    console.log(num); // 123
+```
+
+9.运算符的转换
+
+```
+    let strnum = '123';
+    let num = '123' * 1
+    console.log(num) //123
+```
+
+###### 2.String
+
+**情景1：String(val)或者val.toString()**
+***转换规则：除对象以外，都是直接用字符串包起来***
+
+```
+console.log(String(1)); //'1'
+console.log(String(NaN)); //'NaN'
+console.log(String(null)); //'null'
+console.log(String(undefined)); //'undefined'
+console.log(String(Symbol())); //'Symbol()'
+console.log(String({})); //'[object Object]'
+```
+
+2.运算符+有两边，一边是字符串或者某些对象
+
+```
+console.log(10+'10');	//'1010'
+```
+
+```
+console.log(10+new Date());	//10Thu Aug 18 2022 17:25:52 GMT+0800 (中国标准时间)
+```
+
+###### 运算符“+”
+
++值出现在左边
+i是**数字类型**的时候
+
+```
+let i=10;
+i++
+i--
+--i
+++i
+console.log(i);	//11
+```
+
+等价于
+
+```
+let i=10;
+i=i+1;
+console.log(i);	//11
+```
+
+###### 3.Boolean
+
+**转换规则：**
+***除了“0/NaN/空字符串/null/undefined"五个值是false，其余值都是true***
+
+```
+    console.log(Boolean(0) + '0'); // 'false0'
+    console.log(Boolean(NaN) + 'NaN'); // 'falseNaN'
+    console.log(Boolean(undefined) + 'undefined'); // 'falseundefined'
+    console.log(Boolean(null) + 'null'); // 'falsenull'
+    console.log(Boolean('') + '空字符串'); // 'false空字符串'
+```
+
+# 检测数据类型的五种方式
+
+### **1.typeof**
+
+***typeof 返回对应类型的字符串***
+
+```
+    let num = 123;
+    let srt = '123'
+    let bool = true;
+
+    let arr = []
+    let obj = {}
+    let fun = function () { }
+    let cla = class { }
+    //typeof 这种方法只能检测基本数据类型，null和对象都会返回object
+    console.log(typeof num); // number
+    console.log(typeof srt); // string
+    console.log(typeof bool); // boolean
+    console.log(typeof arr); // object
+    console.log(typeof obj); // object
+    console.log(typeof fun); // function
+    console.log(typeof cla); // function
+    console.log(typeof null); // object
+    console.log(typeof undefined); // undefined
+    console.log(typeof Array); // function
+    console.log(typeof Function); // function
+    console.log(typeof aaa); // undefined   未定义的变量也是undefined
+```
+
+总结：typeof 检测基本数据类型比较准，null检测为object不代表它是引用数据类型，null为空是特殊的基本数据类型，引用数据类型都为 object，内置构造函数和函数都为 function
+
+### 2.instanceof
+
+ ***instanceof 检测类型返回布尔值***
+
+```
+    let num = 123;
+    let srt = '123'
+    let bool = true;
+        // instanceof 返回值是一个bool值 只要是基本数据类型检测就是false 只要是引用数据类型并且右边是object就是true 但是不能检测null和undefined，因为null和undefined没有构造函数 
+    console.log(num instanceof Number); // false
+    console.log(srt instanceof String); // false
+    console.log(bool instanceof Boolean); // false
+    console.log(arr instanceof Array); // true
+    console.log(obj instanceof Object); // true
+    console.log(fun instanceof Function); // true
+    console.log(cla instanceof Function); // true
+    console.log(null instanceof Object); // false
+    console.log(undefined instanceof Object); // false
+    console.log(Array instanceof Function); // true
+    console.log(Function instanceof Function); // true
+    // console.log(aaa instanceof Object); // 会报错
+```
+
+总结：instanceof 不能检测基本数据类型，判断前者的 proto 是否在后者的原型对象上
+
+### 3.constructor
+
+***constructor 返回构造函数***
+
+```
+      let num = 123;
+    let srt = '123'
+    let bool = true;
+  //constructor  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断，可以被修改
+    console.log(num.constructor); // f Number() { [native code] }
+    console.log(srt.constructor); // f String() { [native code] }
+    console.log(bool.constructor); //   f Boolean() { [native code] }
+    console.log(arr.constructor); //    f Array() { [native code] }
+    console.log(obj.constructor); //    f Object() { [native code] }
+    console.log(fun.constructor); //    f Function() { [native code] }
+    console.log(cla.constructor); //    f Function() { [native code] }
+    // console.log(null.constructor); // 报错
+    // console.log(undefined.constructor); // 报错
+    console.log(Array.constructor); //  f Function() { [native code] }
+    console.log(Function.constructor); //   f Function() { [native code] }
+    // console.log(aaa.constructor); // 报错
+    function demo() { }
+    console.log(demo.constructor); //   f Function() { [native code] }
+    demo.prototype = Array.prototype;
+    let demo1 = new demo();
+    console.log(demo1.constructor); //  f Array() { [native code] }
+```
+
+总结：返回当前值的构造函数，比如向 [] 数组这种，都是通过 new Array() 这样去创建实例的，这个 Array 就是数组的构造函数
+
+### 4.Object.prototype.toString.call()
+
+```
+         let num = 123;
+    let srt = '123'
+    let bool = true;
+   // Object.prototype.toString.call()  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断
+    console.log(Object.prototype.toString.call(num)); // [object Number]
+    console.log(Object.prototype.toString.call(srt)); // [object String]
+    console.log(Object.prototype.toString.call(bool)); // [object Boolean]
+    console.log(Object.prototype.toString.call(arr)); // [object Array]
+    console.log(Object.prototype.toString.call(obj)); // [object Object]
+    console.log(Object.prototype.toString.call(fun)); // [object Function]
+    console.log(Object.prototype.toString.call(cla)); // [object Function]
+    console.log(Object.prototype.toString.call(null)); // [object Null]
+    console.log(Object.prototype.toString.call(undefined)); // [object Undefined]
+    console.log(Object.prototype.toString.call(Array)); // [object Function]
+    console.log(Object.prototype.toString.call(Function)); // [object Function]
+    // console.log(Object.prototype.toString.call(aaa)); // 没定义会报错
+```
+
+### 5.Object.getPrototypeOf()
+
+```
+       let num = 123;
+    let srt = '123'
+    let bool = true;
+        //Object.getPrototypeOf()  这种方法可以检测所有数据类型，但是返回的是一个字符串，需要用正则表达式来判断
+    console.log(Object.getPrototypeOf(num)); // Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, …}
+    console.log(Object.getPrototypeOf(srt)); //     String {0: "", length: 0, constructor: ƒ, anchor: ƒ, big: ƒ, …}
+    console.log(Object.getPrototypeOf(bool)); //    Boolean {false, constructor: ƒ, toString: ƒ, valueOf: ƒ}
+    console.log(Object.getPrototypeOf(arr)); //     ƒ () { [native code] }
+    console.log(Object.getPrototypeOf(obj)); //    ƒ () { [native code] }
+    console.log(Object.getPrototypeOf(fun)); // [Function]
+    console.log(Object.getPrototypeOf(cla)); // [Function]
+    // console.log(Object.getPrototypeOf(null)); // 报错
+    // console.log(Object.getPrototypeOf(undefined)); // 报错
+    console.log(Object.getPrototypeOf(Array)); // [Function]
+    console.log(Object.getPrototypeOf(Function)); // [Function]
+    // console.log(Object.getPrototypeOf(aaa)); // 报错
+```
+
+### **五种方法的总结**
+
+- ***typeof：这种方法只能检测基本数据类型，null 和对象的不准***
+- ***instanceof：只要是基本数据类型检测就是false，只要是引用数据类型，并且右边是 Object 就是true，可以很好的区分是哪一大类型***
+- ***constructor：可以检查基本和引用数据类型，但是可以被修改，有一定的缺陷***
+- ***Object.prototype.toString.call()：这种方式是最准的，什么类型都可以检测***
+- ***Object.getPrototypeOf()：这种方法获取原型***
+
+# 运算符
+
+### 1.数学运算符
+
+数学运算符就是常见的**加(+)、减(-)、乘(*)、除(/)、等于(=)、**自增(++)、自减(--)、加等于(+=)、减等于(-=)**等
+
+```
+let num = 0;
+num = 1 + 3 - 4 / 2 * 2; // 0
+num = num++; // 1
+num = num--; // 0
+num += 1; // 1
+num -= 1; // 0
+```
+
+### 2.比较运算符
+
+与数学运算中的比较相同**：大于(>)、小于(<)、大于等于(>=)、小于等于(<=)、相等(==)、全等(===)、不等(!=)、不全等(!==)**等；注意: **全等不光比较两者值是否相同，还比较变量类型是否相同；不全等也是一样**；
+
+```
+1 == '1' // true 两者虽然类型不同但是==比较时会发生隐式类型转换进行比较
+1 === '1' // false 前者是number类型，后者是string类型
+```
+
+### 3.三元表达式
+
+三元表达式可以替代简单的if条件，**表达式为判断条件 ？条件为真 ：条件为假**。例如：
+
+```
+if（1 > 2）{
+    console.log("真");
+}else {
+    console.log("假");
+}
+// 三元表达式 —— 代码更加简洁清晰
+1 > 2 ? console.log("真") : console.log("假")
+```
+
+### 4.短路运算符 && 与 ||
+
+**短路运算符就是从左到右的运算中前者满足要求，就不再执行后者了。**
+
+&&：从左到右依次判断，如果遇到一个假值，就返回假值，以后不再执行，否则返回最后一个真值；
+
+|| ：为取真运算，从左到右依次判断，如果遇到一个真值，就返回真值，以后不再执行，否则返回最后一个假值；
+
+# 变量
+
+### 作用域及作用域链
+
+所谓作用域通俗点讲就是变量的可作用范围。
+
+一般有三种作用域。全局，函数，块。
+
+在作用域嵌套下，由内向外，一层一层往上的链式规则，这就是作用域链
+
+```
+var a = 100;
+function fun1() {
+  var b = 200;
+  if (true) {
+    let c = 300;
+    console.log(c);
+  }
+  console.log(b);
+}
+fun1();
+console.log(a);
+```
+
+### 变量提升及函数提升
+
+变量提升是指将变量声明提升到它所在的作用域的最开始部分
+
+```
+console.log(str)
+var str = 'Jerry'
+console.log(str)
+// undefined Jerry
+
+相当于
+var str
+console.log(str)
+str = 'Jerry'
+console.log(str)
+```
+
+创建函数有两种形式，一种是函数声明，另外一种是函数字面量，**只有函数声明才有变量提升**
+
+```
+console.log(a)  // f a() { console.log(a) }
+console.log(b) //undefined
+
+//函数声明
+function a() {
+		console.log(a) 
+}
+
+//函数表达式 
+var b = function(){
+		console.log(b)
+}
+
+//相当于
+var a = 'function'
+var b
+console.log(a)
+console.log(b)
+
+```
+
+函数提升与变量提升的优先级
+
+```
+console.log(a);    // f a() {console.log(10)}
+console.log(a());    // 10 undefined
+var a = 3;
+
+function a() {
+		console.log(10) //10
+}
+```
+
+# 字符串 String()
+
+### 1.length     ***代表字符串长度***
+
+```
+var str = '一二三四五六';
+console.log(str.length);//   6
+```
+
+### 2.chanAt() 返回指定位置的字符
+
+字符串中，字符的位置也是***从0开始，依次递增***。
+
+```
+var str = '一二三四五六';
+var a = str.charAt(5);
+console.log(a);//   六
+```
+
+### 3.concat() 用于拼接两个或多个字符串
+
+***不会修改原字符串，会将拼接好的字符串以返回值的方式返回出来***。
+
+```
+var str1 = 'abc';
+    var str2 = 'def';
+    var a = str2.concat(str1);
+    console.log(a);//   'defabc'
+```
+
+
+
+### 4.indexOf() 查找    从前往后
+
+可以在字符串中查找指定的字符。可以查到的的话返回值字符所在的位置。查不到返回 -1。如果要查找的字符在字符中存在多个，永远只找一个。
+
+```
+var str = '一二三四五六';
+console.log(str.indexOf('二'));//   1
+```
+
+### 5.lastindexOf() 查找  从后往前
+
+使用方法和 indexOf 一样。
+ 但是 indexOf 是从前往后查找，lastindexOf() 是从后往前查找。
+
+```
+var str = '一二三四五六';
+console.log(str.indexOf(‘五'));//   4
+```
+
+### 6.replace() 替换
+
+有两个参数。第一个参数，旧的字符。第二个参数，新的字符。不会修改原数组。会将替换好的数组以返回值的形式返回出来。如果旧的字符在字符串中不止一个，则替换第一个。
+
+```
+    var rep = '一二三四五六'
+    console.log(rep.replace('三', '七')); // 一二七四五六
+    console.log(rep); // 一二三四五六
+```
+
+### 7.split()   将字符串转化成字符串数组
+
+```
+    var strr = '1一1二1三1四1五1六'
+    console.log(strr);
+    console.log(strr,split()); // 1一1二1三1四1五1六
+    console.log(strr.split('')); // ["1", "一", "1", "二", "1", "三", "1", "四", "1", "五", "1", "六"]
+    console.log(strr.split('1')); // ["", "一", "二", "三", "四", "五", "六"]
+    console.log(strr.split('1', 2));// ["", "一"]
+```
+
+### 8.substr()   字符串的截取
+
+有两个参数
+ 第一个参数：起始的位置
+ 第二个参数：截取的数量
+ 不会改变原数组
+ 会将截取到的字符串以返回值的形式返回出来
+
+```
+var str = '1一1二1三1四1五1六';
+console.log(str.substr(1,3));//   '一1二'
+```
+
+### 9.substr()   字符串的指定位置的截取
+
+有两个参数
+ 第一个参数：起始的位置（返回时包括位置所对应的字符）
+ 第二个参数：结束的位置（返回时不包括位置所对应的字符）
+ 不会改变原数组
+ 会将截取到的字符串以返回值的形式返回出来
+
+```
+var str = '1一1二1三1四1五1六';
+console.log(str.substring(1,3));//   '一1'
+```
+
+### 10.toLowerCase()  大写字母转小写字母
+
+不会改变原数组
+ 会将转换好的字符串以返回值的形式返回出来
+
+```
+var str = 'AaBbCcDdEe';
+console.log(str.toLowerCase());// aabbccddee
+```
+
+### 11.toUpperCase() 小写字母转大写字母
+
+不会改变原数组
+ 会将转换好的字符串以返回值的形式返回出来
+
+```
+var str = 'AaBbCcDdEe';
+console.log(str.toUpperCase());//   AABBCCDDEE
+```
+
+前七种是常用的方面，后面几种简单了解

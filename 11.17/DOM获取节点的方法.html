@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" id="one" name="content">DIV内容</div>
+    <div class="box" id="two" name="content">DIV内容</div>
+</body>
+<script>
+    var div = document.getElementById("one"); // 通过id获取节点
+    var div1 = document.getElementById("two"); // 通过id获取节点
+    var list = document.getElementsByClassName("box") // 通过类名获取节点
+    var lists = document.getElementsByTagName("div") // 通过标签名获取节点
+    var listss = document.getElementsByName("content") // 通过name获取节点
+    console.log(div);
+    console.log(div1);
+    console.log(list);
+    console.log(lists);
+    console.log(listss);
+    // querySelector
+    var div2 = document.querySelector(".box") // 通过类名获取节点
+    var div3 = document.querySelector("#two")  
+    // querySelectorAll
+    var list1 = document.querySelectorAll(".box") // 通过类名获取全部节点
+    console.log(div2);
+    console.log(div3);
+    console.log(list1);
+</script>
+
+</html>
