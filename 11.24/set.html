@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // let set =new Set()
+    // console.log(set);
+    // set.add('万叶')
+    // set.add('万叶1')
+    // set.add('万叶2')
+    // set.add('万叶3')
+    // set.add('万叶4')
+    // console.log(set);
+    // // 获取长度
+    // console.log(set.size);
+    // // 删除元素
+    // set.delete('万叶')
+    // console.log(set);
+    // // 判断是否存在
+    // console.log(set.has('万叶'));
+    // //循环
+    // for(let item of set){
+    //     console.log(item);
+    // }
+    // // 清空
+    // set.clear()
+    // console.log(set);
+    // // 去重
+    // let arr = [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9]
+    // let set1 = new Set(arr)
+    // console.log(set1);
+    // //转换成数组
+    // let arr1 = [...set1]
+    // console.log(arr1);
+    // let arr2 = Array.from(set1)
+    // console.log(arr2);
+
+    //set.prototype.keys() 返回键名的遍历器
+    // set.prototype.values() 返回键值的遍历器
+    // set.prototype.entries() 返回键值对的遍历器
+    // set.prototype.foreach() 使用回调函数遍历每个成员
+    // Set.prototype.keys()返回Set实例对象的键名遍历器。
+    var set = new Set([1, 2, 3, 3, 4, 4, 5, 5, 5]);
+    set; // {1, 2, 3, 4, 5}
+    var iter = set.keys();
+    iter.next().value; // 1
+    iter.next().value; // 2
+    iter.next().value; // 3
+    iter.next().value; // 4
+    iter.next().value; // 5
+    iter.next(); // undefined
+    // 但由于Set没有键名，只有键值，故keys()方法和Set.prototype.values()方法的返回值是一致的，
+    // 也可以理解成keys()方法是values()方法的别名 (出于与 Map 对象保持相似的原因)，返回的都是键值。
+
+
+    // Set.prototype.values()方法返回一个键值的遍历器。这个对象以插入Set 对象的顺序包含了原 Set 对象里的每个元素。
+    var set = new Set([1, 2, 3, 3, 4, 4, 5, 5, 5]);
+    set; // {1, 2, 3, 4, 5}
+    var iter = set.values();
+    iter.next().value; // 1
+    iter.next().value; // 2
+    iter.next().value; // 3
+    iter.next().value; // 4
+    iter.next().value; // 5
+    iter.next(); // undefined
+
+
+    // Set.prototype.entries()方法返回一个键值对的遍历器。由于Set对象实例没有键名，故返回的迭代器的每一项的值都是两个相同值组成的数组。
+    var set = new Set('abcde');
+    set; // {"a", "b", "c", "d", "e"}
+    var iter = set.entries();
+    iter.next().value; // ['a', 'a']
+    iter.next().value; // ['b', 'b']
+    iter.next().value; // ['c', 'c']
+    iter.next().value; // ['d', 'd']
+    iter.next().value; // ['e', 'e']
+    iter.next(); // undefined
+
+
+    // Set.prototype.forEach()方法根据集合中元素的顺序，对每个元素都执行提供的回调函数一次，该方法没有返回值。
+    //    语法  set.forEach(func, thisArg);
+    // func：回调函数。Set对象的每个值都会执行一次这个函数。该函数接受3个参数，分别是元素的值，元素的索引和Set对象本身。
+    // 由于Set对象没有索引，故该函数的第一个参数和第二个参数的值是一样的。
+
+    // thisArg：func中绑定的this对象。如果不提供该值，在严格模式下是undefined，非严格模式下是全局对象。
+    // 示例1：输出Set对象中的值
+    var set = new Set('photoshop');
+    set.forEach(function (value, key) {
+        console.log("value:", value, "key:", key);
+    });
+    /*
+            value: p key: p
+            value: h key: h
+            value: o key: o
+            value: t key: t
+            value: s key: s
+            */
+    // 示例2：在遍历过程中添加元素
+    var set = new Set('photoshop');
+    var i = 0;
+    set.forEach(function (value) {
+        if (i < 5) {
+            set.add(++i);
+        }
+        console.log("value:", value);
+    });
+    /*
+        value: p
+        value: h
+        value: o
+        value: t
+        value: s
+        value: 1
+        value: 2
+        value: 3
+        value: 4
+        value: 5
+        */
+    // 示例3：在遍历过程中删除元素
+    var set = new Set('photoshop');
+    var i = 0;
+    var array = ["t", "s"];
+    set.forEach(function (value) {
+        if (i < 2) {
+            set.delete(array[i++]);
+        }
+        console.log("value:", value);
+    });
+    /*
+        value: p
+        value: h
+        value: o
+        */
+    // 示例4：在遍历过程中先删除已访问元素，后再添加被删除的元素
+    var set = new Set('photoshop');
+    set; // {"p", "h", "o", "t", "s"} 
+    var i = 0;
+    set.forEach(function (value) {
+        console.log("value:", value);
+        if (i == 0) {
+            set.delete('p');
+        } else if (i == 3) {
+            set.add('p');
+        }
+        i++;
+    });
+    /*
+    value: p
+    value: h
+    value: o
+    value: t
+    value: s
+    value: p
+    */
+    set; // {"h", "o", "t", "s", "p"}
+
+</script>
+
+</html>

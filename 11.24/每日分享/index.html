@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // promise的方法
+    // 1.链式调用
+    // 1.他可以一直then下去，每个then都不会影响到下一个then
+    // 2.在其中一个then里面return一个值，那么下一个then的参数就是这个值
+    // 2.封装promise
+    // 3.catch方法   返回错误信息
+    // 4.Promise.all方法 所有的promise都执行完毕之后再执行then方法 有一个失败就失败
+    //5.Promise.race方法  哪个先执行完就返回,只要有一个成功就成功，返回成功的那一个
+    // Promise.try方法
+    // let p = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve('11')
+    //     }, 1000)
+    // })
+    // let p1 = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         reject('112')
+    //     }, 2000)
+    // })
+    // let p2 = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve('113')
+    //     }, 3300)
+    // })
+    // // Promise.all([p, p1, p2]).then((res) => {
+    // //     console.log(res);
+    // // }).catch((err) => {
+    // //     console.log(err);
+    // // })
+    // Promise.race([p, p1, p2]).then((res) => {
+    //     console.log(res);
+    // }).catch((err) => {
+    //     console.log(err);
+    // })
+
+    async function fn() {
+        return 111
+    }
+    fn()
+    // async function fn1() {
+    //     return await fn()
+    // }
+    // fn1().then((res) => {
+    //     console.log(res);
+    // })
+    async function fn() {
+        return 10
+    }
+    async function fn1(num) {
+        return num + 11
+    }
+    async function fn2(num) {
+        return num + 12
+    }
+    async function fn3(num) {
+        return num + 13
+    }
+    async function fn4() {
+        let text = await fn()
+        text = await fn1(text)
+        text = await fn2(text)
+        text = await fn3(text)
+        console.log(text);
+    }
+    fn4()
+</script>
+
+</html>
