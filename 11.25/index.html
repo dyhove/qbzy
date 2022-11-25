@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // class Point {
+    //     constructor(x,y) {
+    //         this.x = x
+    //         this.y = y
+    //     }
+    //     toSring(){
+    //         return '('+this.x+','+this.y+')'
+    //     }
+    // }
+    // let p = new Point(1,2)
+    // let resule = p.toSring()
+    // console.log(resule);
+
+    // class Phons {
+    //     constructor(brand,price) {
+    //         this.brand = brand
+    //         this.price = price
+    //     }
+    //     call() {
+    //         return 
+    //     }
+    //     info() {
+
+    //     }
+    // }
+
+    
+
+    function Phone(brand,price) {
+        this.brand = brand
+        this.price = price
+    }
+    Phone.prototype.call = function() {
+        console.log('这可以电话');
+    }
+    function SmPone(brand,price,color,size) {
+        Phone.call(this,brand,price)
+        this.color = color
+        this.size = size
+    }
+
+    SmPone.prototype = new Phone
+    SmPone.prototype.constructor = SmPone
+
+    SmPone.prototype.photo = function() {
+        console.log('这可以拍照');
+    }
+    SmPone.prototype.Game = function() {
+        console.log('这可以玩游戏');
+    }
+    const xxx = new SmPone('星星','9999','黑色','5.5inch')
+    console.log(xxx);
+    
+
+</script>
+</html>

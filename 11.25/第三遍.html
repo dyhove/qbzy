@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function Point(x, y) {
+    //     this.x = x
+    //     this.y = y
+    // }
+    // Point.prototype.toSring = function () {
+    //     return '(' + this.x + ',' + this.y + ')'
+    // }
+    // let p = new Point(1, 2)
+    // let resule = p.toSring()
+    // console.log(resule);
+
+    // class Point {
+    //     constructor(x, y) {
+    //         this.x = x
+    //         this.y = y
+    //     }
+    //     toSring() {
+    //         return '(' + this.x + ',' + this.y + ')'
+    //     }
+    // }
+    // let p = new Point(1, 2)
+    // let resule = p.toSring()
+    // console.log(resule);
+    // function Phone(brand, price) {
+    //     this.brand = brand
+    //     this.price = price
+    // }
+    // Phone.prototype.call = function () {
+    //     console.log('这可以电话');
+    // }
+    // let vivo = new Phone('IQOO', 3000)
+    // console.log(vivo);
+    // //class
+    // class shouji {
+    //     constructor(brand, price) {
+    //         this.brand = brand
+    //         this.price = price
+    //     }
+    //     call() {
+    //         console.log('这可以电话');
+    //     }
+    // }
+    // let vivo1 = new shouji('IQOO', 3000)
+    // console.log(vivo1);
+    // class Phone {
+    //     get price() {
+    //         console.log('get读取这个内容了');
+    //         return '666'
+    //     }
+    //     set price(value) {
+    //         console.log('set设置这个内容了');
+    //     }
+    // }
+    // let s = new Phone()
+    // console.log(s.price);
+    // s.price = 1000
+
+
+    // class Tle {
+    //     static tle(n = 1) {
+    //         return n * 3
+    //     }
+    // }
+    // class Big extends Tle {
+    //     static tel(n) {
+    //         return super.tle(n) * super.tle(n)
+    //     }
+    // }
+    // console.log(Big.tel());
+    // console.log(Big.tel(2));
+    // let tp = new Tle()
+    // console.log(Big.tle(3));
+    // console.log(tp.tle());
+
+
+    // function Phone(brand, price) {
+    //     this.brand = brand
+    //     this.price = price
+    // }
+    // Phone.prototype.call = function () {
+    //     console.log('这可以电话');
+    // }
+    // function SmPone(brand, price, color, size) {
+    //     Phone.call(this, brand, price)
+    //     this.color = color
+    //     this.size = size
+    // }
+    // SmPone.prototype = new Phone
+    // SmPone.prototype.constructor = SmPone
+    // SmPone.prototype.photo = function () {
+    //     console.log('这可以拍照');
+    // }
+    // SmPone.prototype.Game = function () {
+    //     console.log('这可以玩游戏');
+    // }
+    // const xxx = new SmPone('星星', '9999', '黑色', '5.5inch')
+    // console.log(xxx);
+    // class SmPone extends Phone {
+
+    //     constructor(brand, price, color, size) {
+
+    //         super(brand, price)
+    //         this.color = color
+    //         this.size = size
+    //     }
+
+    //     photo() {
+    //         console.log('这可以拍照');
+    //     }
+    //     Game() {
+    //         console.log('这可以玩游戏');
+    //     }
+    //     call() {
+    //         console.log('这个还能打视频');
+    //     }
+    // }
+    // const vivo = new SmPone('IQOO', '5999', '白色', '5.5inch')
+    // console.log(vivo);
+    // vivo.photo()
+    // vivo.Game()
+    // vivo.call()
+
+    function equal(a, b) {
+        if (Math.abs(a - b) < Number.EPSILON) {
+            return true
+        } else {
+            return false
+        }
+    }
+    console.log(equal(0.1 + 0.2, 0.3));
+    console.log(0.1 + 0.2 === 0.3);
+
+    // 1.二进制和八进制
+    let b = 0b1010
+    let o = 0o777
+    //十进制
+    let d = 100
+    let x = 0xff
+    console.log(x);
+
+    console.log(Number.isFinite(100));
+    console.log(Number.isFinite(100 / 0));
+    console.log(Number.isFinite(Infinity));
+
+    console.log(Number.isNaN(123));
+
+    console.log(Number.parseInt('1544512121dyh'));
+    console.log(Number.parseFloat('154.1511代'));
+
+    console.log(Number.isInteger(5));
+    console.log(Number.isInteger(2.5));
+
+    console.log(Math.trunc(5.5));
+
+    console.log(Math.sign(5));
+    console.log(Math.sign(-5));
+    console.log(Math.sign(0));
+</script>
+
+</html>
