@@ -279,18 +279,18 @@
             li.innerHTML = `<div class="lis"><input type="checkbox" class="qh"> <p class="vla">${input.value}</p></div> <span class="del">X</span>`;
             todos.appendChild(li);
             // 计算总数量
-
             input.value = '';
         }
     }
     //删除事件
     todos.onclick = function (e) {
         if (e.target.className == 'del') {
-            todos.removeChild(e.target.parentNode)
-        }
-        if (todos.children.length == 0) {
-            empty.style.display = 'block'
-            options.style.display = 'none'
+            todos.removeChild(e.target.parentNode);
+            shu.innerHTML = todos.children.length;
+            if (todos.children.length == 0) {
+                empty.style.display = 'block'
+                options.style.display = 'none'
+            }
         }
     }
     // 切换状态
