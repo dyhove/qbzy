@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js//vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>姓：<input type="text" v-model="firstName"> </div>
+        <div>名：<input type="text" v-model="lastName"> </div>
+        <div>姓名： <input type="text" v-model="fullName"></div>
+        <div>孙：<input type="text" v-model="parent.children.grandson"> </div> -->
+
+        <h2>人员列表</h2>
+        <ul>
+            <li v-for="(item, index) in persons" :key="item.id">
+                {{item.name}} == {{item.age}}
+                <input type="text">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: "七",
+            lastName: "七七",
+            parent: {
+                children: {
+                    grandson: "孙七"
+                }
+            },
+            persons: [
+                { id: "001", name: "张三", age: 18 },
+                { id: "002", name: "李四", age: 19 },
+                { id: "003", name: "王五", age: 20 },
+            ],
+            car: {
+                name: "奥迪A8",
+                price: "70万",
+                color: "黑色"
+            },
+            str: "hello world"
+        },
+        // computed: {
+        // 完整代码
+        // fullName: {
+        //     get: function () {
+        //         return this.firstName + '-' + this.lastName
+        //     },
+        //     set: function (newValue) {
+        //         console.log(newValue);
+        //         var names = newValue.split('-')
+        //         this.firstName = names[0]
+        //         this.lastName = names[names.length - 1]
+        //     }
+        // }
+        // 简写代码
+        //         fullName() {
+        //             return this.firstName + '-' + this.lastName
+        //         }
+        //     },
+        //     watch: {
+        //         // 获取孙七的值
+        //         parent: {
+        //             handler: function (newValue, oldValue) {
+        //                 console.log(newValue);
+        //                 console.log(oldValue);
+        //             },
+        //             deep: true
+        //         }
+        //     }
+    })
+</script>
+
+</html>

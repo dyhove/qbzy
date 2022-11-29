@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- computed具有缓存的特性，只有依赖值发生变化才会重新计算
+    computed都包含一个 getter 方法和一个 setter 方法
+    computed不支持异步
+    computed必须用return返回 -->
+    <!-- watch 不具有缓存的特性，只要监听的值发生变化就会执行回调
+    watch 支持异步
+    watch 不是必须return
+ -->
+    <!-- methods没有缓存性 -->
+    <div id="app">
+        <div>姓：<input type="text" v-model="fiName"> </div>
+        <div>名：<input type="text" v-model="lastName"> </div>
+        <div>姓名：<input type="text" v-model="fullName"> </div>
+        {{fullName}}
+        {{fullName}}
+        {{fullName}}
+        {{fullName}}
+        {{fullName}}
+        {{fullName}}
+        {{fullName}}
+        <!-- <div>姓名：<input type="text" v-model="fullName" @input="editname"> </div> -->
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            fiName: "七",
+            lastName: "七七",
+            fullName: '七-七七',
+        },
+        computed: {
+            // fullName: {
+            //     get() {
+            //         return this.fiName + '-' + this.lastName
+            //     },
+            //     set(newName) {
+            //         let names = newName.split('-')
+            //         // console.log(names);
+            //         this.fiName = names[0]
+            //         this.lastName = names[1]
+            //     }
+            // }
+            // fullName() {
+            //     return this.fiName + '-' + this.lastName
+            // }
+        },
+        methods: {
+            // editname() {
+            //     let names = newName.split('-')
+            //     this.fiName = names[0]
+            //     this.lastName = names[1]
+            // },
+            // fullNames() {
+            //     console.log('执行了');
+            //     this.fullName = this.fiName + '-' + this.lastName
+            //     return this.fiName + '-' + this.lastName
+            // }
+        },
+        watch: {
+            fiName(newName, oldName) {
+                console.log(6);
+                this.fullName = newName + '-' + this.lastName
+            },
+            lastName(newName, oldName) {
+                console.log(6);
+                this.fullName = this.fiName + '-' + newName
+            },
+            fullName(newName, oldName) {
+                console.log(6);
+                setTimeout(() => {
+                    let names = newName.split('-')
+                    this.fiName = names[0]
+                    this.lastName = names[1]
+                }, 1000)
+            }
+        }
+    })
+</script>
+
+</html>

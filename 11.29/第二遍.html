@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+
+        .happy {
+            border: 4px solid red;
+            background-color: #a9c21d;
+            background: linear-gradient(30deg, yellow, pink, orange, yellow);
+        }
+
+        .sad {
+            border: 4px solid aqua;
+            background-color: #ccc;
+        }
+
+        .normal {
+            background-color: aquamarine;
+        }
+
+        .at1 {
+            background-color: yellowgreen;
+        }
+
+        .at2 {
+            font-size: 30px;
+            text-shadow: 2px 2px 10px red;
+        }
+
+        .at3 {
+            border-radius: 20px;
+        }
+    </style>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>姓：<input type="text" v-model="firstName"> </div> -->
+        <!-- <div>名：<input type="text" v-model="lastName"> </div> -->
+        <!-- <div>姓名： <input type="text" v-model="fullName" @input="editname"></div> -->
+        <!-- <div>姓名： <input type="text" v-model="fullName"></div> -->
+        <!-- <div>{{fullNames()}}</div> -->
+        <!-- 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态绑定 -->
+        <!-- <div class="a" :class="mood" @click="ac">{{fullName}}</div> -->
+        <!-- 绑定class样式--数组写法，适用于：需要绑定的样式个数不确定，名字也不确定 -->
+        <!-- <div class="a" :class="classarr">数据绑定</div> -->
+        <!-- 绑定class样式--对象写法，适用于：样式的类名确定，不需要动态绑定 -->
+        <!-- <div class="a" :class="classobj">数据绑定</div> -->
+        <!-- 绑定class样式--三元表达式写法，适用于：样式的类名确定，不需要动态绑定 -->
+        <!-- <div class="a" :class="mood=='happy'?'at1':'at2'">数据绑定</div> -->
+        <!-- <div>孙：<input type="text" v-model="parent.children.grandson"> </div>
+        <h2>人员列表</h2>
+        <button @click="add">添加老六</button>
+        <ul>
+            <li v-for="(item, index) in persons" :key="index">
+                {{item.name}} == {{item.age}}
+                <input type="text">
+            </li>
+        </ul> -->
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        // data: {
+        //     firstName: "七",
+        //     lastName: "七七",
+        //     fullName: "七-七七",
+        //     mood: "",
+        //     classarr: ["at1", "at2", "at3"],
+        //     classobj: {
+        //         happy: true,
+        //         sad: false,
+        //         normal: true
+        //     },
+        //     parent: {
+        //         children: {
+        //             grandson: "孙七"
+        //         }
+        //     },
+        //     persons: [
+        //         { id: "001", name: "张三", age: 18 },
+        //         { id: "002", name: "李四", age: 19 },
+        //         { id: "003", name: "王五", age: 20 },
+        //     ],
+        // },
+        // methods: {
+        //     ac() {
+        //         let arr = ["happy", "sad", "normal"];
+        //         let index = Math.floor(Math.random() * 3);
+        //         this.mood = arr[index];
+        //     },
+        //     add() {
+        //         this.persons.unshift({ id: "004", name: "老六", age: 21 });
+        //     },
+        // },
+        // computed: {
+        //     fullName: {
+        //         get: function () {
+        //             return this.firstName + '-' + this.lastName
+        //         },
+        //         set: function (newValue) {
+        //             console.log(newValue);
+        //             var names = newValue.split('-')
+        //             this.firstName = names[0]
+        //             this.lastName = names[1]
+        //         }
+        //     }
+        // }
+        // methods: {
+        //     fullNames() {
+        //         this.fullName = this.firstName + '-' + this.lastName
+        //         return this.firstName + '-' + this.lastName
+        //     },
+        //     editname() {
+        //         var names = this.fullName.split('-')
+        //         this.firstName = names[0]
+        //         this.lastName = names[1]
+        //     }
+        // },
+        // watch: {
+        //     firstName(newValue, oldValue) {
+        //         this.fullName = newValue + '-' + this.lastName
+        //     },
+        //     lastName(newValue, oldValue) {
+        //         this.fullName = this.firstName + '-' + newValue
+        //     },
+        //     fullName(newValue, oldValue) {
+        //         var names = newValue.split('-')
+        //         this.firstName = names[0]
+        //         this.lastName = names[1]
+        //     }
+        // }
+    })
+</script>
+
+</html>
