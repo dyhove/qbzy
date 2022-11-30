@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2>人员列表</h2>
+        <button @click="updata">更新信息</button>
+        <ul>
+            <li v-for="(item, index) in list" :key="item.id">
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            list: [
+                { id: "001", name: "七七", age: 18, sex: "女" },
+                { id: "002", name: "刻晴", age: 16, sex: "女" },
+                { id: "003", name: "莫娜", age: 20, sex: "女" },
+                { id: "004", name: "迪卢克", age: 21, sex: "男" },
+                { id: "005", name: "琴", age: 22, sex: "女" },
+            ]
+        },
+        methods: {
+            updata() {
+                // this.list[0].name = "神里凌华"
+                // this.list[0].age = 19
+                // this.list.splice(0, 1, { id: "001", name: "神里凌华", age: 19, sex: "女" })  //返回值是一个数组
+                Vue.set(this.list, 0, { id: "001", name: "神里凌华", age: 19, sex: "女" })
+            }
+        }
+    })
+</script>
+
+</html>
