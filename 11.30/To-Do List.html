@@ -317,13 +317,12 @@
     var flags = document.querySelector('.flags');
     var ul = document.querySelector('ul');
     var flag = document.querySelector('.flag');
-    var b = document.querySelector('.num');
+    var nu = document.querySelector('.num');
     var Active = document.querySelector('.Active');
     var Completed = document.querySelector('.Completed');
     var Clear = document.querySelector('.Clear');
     var All = document.querySelector('.All');
     var arr = []
-    var sp
     function fn() {
         var li = document.createElement('li');
         li.innerHTML = `<span>
@@ -339,7 +338,6 @@
         //                 <p class="p">${inp.value}</p>
         //                 <button class="del">X</button>`
         ul.appendChild(li)
-        sp = document.querySelectorAll('.sp')
         for (let index = 0; index < ul.children.length; index++) {
             ul.children[index].style.display = ''
         }
@@ -381,7 +379,7 @@
             }
         }
         console.log(num);
-        b.innerText = num
+        nu.innerText = num
         if (num == ul.children.length) {
             Active.style.display = 'none'
             Completed.style.display = 'none'
@@ -465,46 +463,6 @@
         }
         num()
     }
-
-    // ul.onclick = function (e) {
-    //     console.log(e.target);
-    //     e.target.parentNode.parentNode.className = 'active'
-    //     // 删除
-    //     if (e.target.className == 'del') {
-    //         e.target.parentNode.remove()
-    //         num()
-    //     }
-    //     // 切换状态
-    //     if (e.target.className == 'qh') {
-    //         e.target.parentNode.parentNode.className = 'active'
-    //         // 改变父元素下一个元素节点的样式
-    //         e.target.parentNode.nextElementSibling.style.textDecoration = 'line-through'
-    //         e.target.parentNode.nextElementSibling.style.color = '#fff'
-    //         e.target.parentNode.nextElementSibling.nextElementSibling.style.color = '#fff'
-    //         // 改变父元素的父元素样式
-    //         e.target.parentNode.parentNode.style.backgroundColor = '#fe7345'
-    //         // 改变自身的样式
-    //         e.target.style.backgroundColor = '#fff'
-    //         e.target.style.display = "none"
-    //         // 访问下一个兄弟节点元素 nextElementSibling
-    //         e.target.nextElementSibling.style.display = "block"
-    //         e.target.nextElementSibling.style.color = "#fff"
-    //     } else if (e.target.className == 'duis') {
-    //         e.target.parentNode.parentNode.className = 'active'
-    //         // 改变父元素下一个元素节点的样式
-    //         e.target.parentNode.nextElementSibling.style.textDecoration = 'none'
-    //         e.target.parentNode.nextElementSibling.style.color = '#000'
-    //         e.target.parentNode.nextElementSibling.nextElementSibling.style.color = '#000'
-    //         // 改变父元素的父元素节点的样式
-    //         e.target.parentNode.parentNode.style.backgroundColor = '#f2f2f2'
-    //         // 访问上一个兄弟节点元素 previousElementSibling
-    //         e.target.previousElementSibling.style.display = "block"
-    //         e.target.previousElementSibling.checked = false
-    //         // 自身
-    //         e.target.style.display = "none"
-    //     }
-    // }
-
     // 显示全部的
     All.onclick = function (e) {
         e.target.style.color = '#fff'
