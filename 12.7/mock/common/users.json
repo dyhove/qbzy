@@ -1,0 +1,20 @@
+{
+  "data": {
+    "totalpage": 5,
+    "pagenum": 4,
+    "users": [{
+      "id": 25,
+      "username": "tige117",
+      "mobile": "18616358651",
+      "type": 1,
+      "email": "tige112@163.com",
+      "create_time": "2017-11-09T20:36:26.000Z",
+      "mg_state": true,
+      "role_name": "炒鸡管理员"
+    }]
+  },
+  "meta": {
+    "msg": "获取成功",
+    "status": 200
+  }
+}
