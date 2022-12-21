@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div style="width: 600px; height: 400px"></div>
+		<script src="./echarts.min.js"></script>
+		<script>
+			var myChart = echarts.init(document.querySelector('div'));
+			var dataArr = ['七七', '刻晴', '迪卢克', '莫纳', '缇娜里'];
+			var ydata = [50, 40, 80, 55, 70];
+			var option = {
+				title: {
+					text: '抽奖次数', //标题
+				},
+				xAxis: {
+					type: 'category', //x轴类型
+					data: dataArr, //x轴数据
+				},
+				yAxis: {
+					type: 'value', //y轴类型
+				},
+				series: [
+					{
+						name: '抽奖次数', //图例名称
+						data: ydata, //y轴数据
+						type: 'line', //图表类型
+						itemStyle: {
+							color: '#d00', //折线颜色
+						},
+					},
+				],
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>
